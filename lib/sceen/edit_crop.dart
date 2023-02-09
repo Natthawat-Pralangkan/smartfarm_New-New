@@ -36,6 +36,8 @@ class _edit_cropState extends State<edit_crop> {
   @override
   void initState() {
     getdata_by_id();
+    getplant();
+    getgreenhouse();
     super.initState();
   }
 
@@ -168,7 +170,8 @@ class _edit_cropState extends State<edit_crop> {
       edit5.text = gh_id ?? '';
     });
   }
-String? farm_id, farm_name, email;
+
+  String? farm_id, farm_name, email;
 
   getName() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -178,9 +181,10 @@ String? farm_id, farm_name, email;
       email = preferences.getString('email');
     });
   }
+
 /////////////////////////////getPlant//////////////////////////////////////////////////////
   bool readdata = false;
-  getplant() async {
+  Future<Null>getplant() async {
     PlantModels.clear();
     print(PlantModels);
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -216,7 +220,7 @@ String? farm_id, farm_name, email;
 
 // ////////////////////////////////////////////////////////////////////////////
   bool readdata1 = false;
-  getgreenhouse() async {
+  Future<Null>getgreenhouse() async {
     greehouseModel.clear();
     print(greehouseModel);
     SharedPreferences preferences = await SharedPreferences.getInstance();
