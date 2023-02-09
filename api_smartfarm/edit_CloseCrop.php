@@ -11,7 +11,7 @@ if (isset($_GET)) {
         $cost = $_GET['cost'];
       
 
-        $sql = "UPDATE tb_crop_close SET close_date = '$close_date',amount = '$amount' , cost = '$cost' WHERE crop_id = '$crop_id'";
+        $sql = "UPDATE tb_crop_close SET close_date = '$close_date',amount = '$amount' , cost = '$cost', crop_id = '$crop_id' WHERE crop_id = '$crop_id'";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "true";

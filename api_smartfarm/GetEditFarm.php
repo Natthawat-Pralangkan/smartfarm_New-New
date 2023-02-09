@@ -3,7 +3,7 @@ include 'conn.php';
 header("Access-Control-Allow-Origin: *");
 if (isset($_GET)) {
     if ($_GET['isAdd'] == 'true') {
-        $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE farm_id = '".$_GET['farm_id']."'");
+        $result = mysqli_query($conn, "SELECT * FROM tb_user ");
         if ($result) {
             while($row=mysqli_fetch_assoc($result)){
                 $output[]= array(

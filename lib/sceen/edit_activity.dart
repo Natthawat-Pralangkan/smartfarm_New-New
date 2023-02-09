@@ -43,6 +43,9 @@ class _edit_activity extends State<edit_activity> {
   @override
   void initState() {
     getdata_by_id();
+    getcrop();
+    getdiesease();
+    getbug();
     super.initState();
   }
 
@@ -224,7 +227,7 @@ class _edit_activity extends State<edit_activity> {
 
 //////////////////////////////////////////////getCrop////////////////////////////////
   bool readdata = false;
-  getcrop() async {
+  Future<Null> getcrop() async {
     // Showlist();
     cropModel.clear();
     print(cropModel);
@@ -264,7 +267,7 @@ class _edit_activity extends State<edit_activity> {
 ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////getactivity//////////////////////////////////////////
   bool readdata1 = false;
-  getdiesease() async {
+  Future<Null> getdiesease() async {
     dieseaseModel.clear();
     print(dieseaseModel);
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -301,7 +304,7 @@ class _edit_activity extends State<edit_activity> {
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
   bool readdatabug = false;
-  getbug() async {
+  Future<Null> getbug() async {
     BugModel.clear();
     print(BugModel);
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -368,7 +371,7 @@ class _edit_activity extends State<edit_activity> {
         solve_by = edit9.text,
         activity_id = edit10.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_activity.php?isAdd=true&activity_id=$data_ID&crop_id=$crop_id&work_date=$work_date&work_detail=$work_detail&problem=$problem&cost=$cost&diesease_id=$diesease_id&bug_id=$bug_id&solve_by=$solve_by';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_activity.php?isAdd=true&activity_id=$data_ID&crop_id=$dropdownvalue&work_date=$work_date&work_detail=$work_detail&problem=$problem&cost=$cost&diesease_id=$dropdownvaluediesease&bug_id=$dropdownvaluebug&solve_by=$solve_by';
     await Dio().get(url).then((value) {
       print(url);
       print(value);

@@ -31,6 +31,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   @override
   void initState() {
     getdata_by_id();
+    getCloseCrop();
     super.initState();
   }
 
@@ -157,7 +158,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
       );
 ///////////////////////////////////////////////////////////////////////////
   bool readdata = false;
-  getCloseCrop() async {
+  Future<Null> getCloseCrop() async {
     // Showlist();
     cropModel.clear();
     print(cropModel);
@@ -230,7 +231,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   Future<Null> editdata() async {
     final close_date = edit2.text, amount = edit3.text, cost = edit4.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_CloseCrop.php?isAdd=true&crop_id=$data_ID&close_date=$close_date&amount=$amount&cost=$cost';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_CloseCrop.php?isAdd=true&crop_id=$dropdownvalue&close_date=$close_date&amount=$amount&cost=$cost';
     await Dio().get(url).then((value) {
       print(url);
       print(value);

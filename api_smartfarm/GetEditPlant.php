@@ -20,7 +20,7 @@ if (isset($_GET)) {
             echo json_encode($output);
         } //if
     } else if ($_GET['isAdd'] == 'item') {
-        $result = mysqli_query($conn, "SELECT * FROM tb_plant WHERE farm_id = '".$_GET['farm_id']."'");
+        $result = mysqli_query($conn, "SELECT * FROM tb_plant WHERE plant_id = '".$_GET['plant_id']."'");
         if ($result) {
             $res = mysqli_fetch_assoc($result);
             echo json_encode($res);
