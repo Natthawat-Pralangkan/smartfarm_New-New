@@ -57,15 +57,16 @@ class _diesease extends State<diesease> {
                 print(
                     'diesease_id=$diesease_id,diesease_name=$diesease_name,farm_id=$farm_id');
                 if (diesease_id == null || diesease_id == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
+                  normalDialog(context, 'กรุณากรอกรหัสโรคพืช');
                   return;
                 }
+
                 if (farm_id == null || farm_id == '') {
                   normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
                 }
                 if (diesease_name == null || diesease_name == '') {
-                  normalDialog(context, 'กรุณากรอกสถานะ');
+                  normalDialog(context, 'กรุณากรอกชื่อโรค');
                   return;
                 } else {
                   CheckUser();

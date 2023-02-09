@@ -160,12 +160,12 @@ class _crop extends State<crop> {
                 print(
                     'farm_id=$farm_id,plant_id=$dropdownvalue,crop_date=$valuedate,crop_id=$crop_id,gh_id=$dropdownvaluegh_id');
                 if (farm_id == null || farm_id == '') {
-                  normalDialog(context, 'กรุณากรอกวันที่ปลูก');
+                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
                 }
 
                 if (crop_id == null || crop_id == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสพืช');
+                  normalDialog(context, 'กรุณากรอกรหัสรอบการปลูก');
                   return;
                 }
 
@@ -174,11 +174,11 @@ class _crop extends State<crop> {
                   return;
                 }
                 if (dropdownvaluegh_id == null || dropdownvaluegh_id == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสพืช');
+                  normalDialog(context, 'กรุณากรอกรหัสโรงเรียน');
                   return;
                 }
                 if (valuedate == null || valuedate == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสโรงเรือน');
+                  normalDialog(context, 'กรุณากรอกวันที่เริ่มปลูก');
                 } else {
                   CheckUser();
                 }

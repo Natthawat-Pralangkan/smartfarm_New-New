@@ -56,7 +56,7 @@ class _bug extends State<bug> {
               onPressed: () {
                 print('bug_id=$bug_id,bug_name=$bug_name,farm_id=$farm_id');
                 if (bug_id == null || bug_id == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
+                  normalDialog(context, 'กรุณากรอกรหัสโรค');
                   return;
                 }
                 if (farm_id == null || farm_id == '') {
@@ -64,7 +64,7 @@ class _bug extends State<bug> {
                   return;
                 }
                 if (bug_name == null || bug_name == '') {
-                  normalDialog(context, 'กรุณากรอกสถานะ');
+                  normalDialog(context, 'กรุณากรอกชื่อโรค');
                   return;
                 }
                 if (bug_id == null || bug_id == '') {

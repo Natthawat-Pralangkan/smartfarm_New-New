@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -52,6 +53,7 @@ class _edit_activity extends State<edit_activity> {
   var dropdownvalue;
   var dropdownvaluediesease;
   var dropdownvaluebug;
+  var valuedate;
   @override
   Widget build(BuildContext context) {
     arguments = ModalRoute.of(context)?.settings.arguments as Map;
@@ -371,7 +373,7 @@ class _edit_activity extends State<edit_activity> {
         solve_by = edit9.text,
         activity_id = edit10.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_activity.php?isAdd=true&activity_id=$data_ID&crop_id=$dropdownvalue&work_date=$work_date&work_detail=$work_detail&problem=$problem&cost=$cost&diesease_id=$dropdownvaluediesease&bug_id=$dropdownvaluebug&solve_by=$solve_by';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_activity.php?isAdd=true&activity_id=$data_ID&crop_id=$dropdownvalue&work_date=$valuedate&work_detail=$work_detail&problem=$problem&cost=$cost&diesease_id=$dropdownvaluediesease&bug_id=$dropdownvaluebug&solve_by=$solve_by';
     await Dio().get(url).then((value) {
       print(url);
       print(value);
@@ -451,6 +453,7 @@ class _edit_activity extends State<edit_activity> {
           ),
         ),
       );
+
   Widget input_activity_id() => Container(
         width: 250.0,
         child: TextField(
@@ -467,20 +470,49 @@ class _edit_activity extends State<edit_activity> {
           ),
         ),
       );
+  // Widget input_work_date() => Container(
+  //       width: 250.0,
+  //       child: TextField(
+  //         controller: edit3,
+  //         decoration: InputDecoration(
+  //           labelStyle: TextStyle(color: MyStyle().textColor),
+  //           labelText: 'วันที่บันทึก :',
+  //           enabledBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColor)),
+  //           focusedBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColorfocus)),
+  //         ),
+  //       ),
+  //     );
   Widget input_work_date() => Container(
         width: 250.0,
-        child: TextField(
-          controller: edit3,
-          decoration: InputDecoration(
-            labelStyle: TextStyle(color: MyStyle().textColor),
-            labelText: 'วันที่บันทึก :',
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColorfocus)),
-          ),
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            DateTimeFormField(
+              decoration: const InputDecoration(
+                hintStyle: TextStyle(color: Colors.black45),
+                errorStyle: TextStyle(color: Colors.redAccent),
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.event_note),
+                labelText: 'วันที่บันทึก',
+              ),
+              firstDate: DateTime.now().add(const Duration(days: 10)),
+              lastDate: DateTime.now().add(const Duration(days: 40)),
+              initialDate: DateTime.now().add(const Duration(days: 20)),
+              autovalidateMode: AutovalidateMode.always,
+              validator: (DateTime? e) =>
+                  (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
+              onDateSelected: (DateTime value) {
+                print(value.toString());
+                setState(() {
+                  valuedate = value.toString();
+                });
+              },
+            ),
+          ],
         ),
       );
   Widget input_work_detail() => Container(

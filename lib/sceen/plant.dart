@@ -127,26 +127,26 @@ class _plant extends State<plant> {
                   return;
                 }
                 if (age == null || age == '') {
-                  normalDialog(context, 'กรุณากรอกอายุเก็บเกี่ยว');
+                  normalDialog(context, 'กรุณากรอกอายุพืช(วัน)');
                   return;
                 }
                 if (ph == null || ph == '') {
-                  normalDialog(context, 'กรุณากรอก pH [ ]-[ ]');
+                  normalDialog(context, 'กรุณากรอก ค่าpH');
                   return;
                 }
                 if (temp_max == null || temp_max == '') {
                   normalDialog(context, 'กรุณากรอกอุณภูมิสูงสุด');
                   return;
                 }
-                if (farm_id == null || farm_id == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
-                  return;
-                }
+
                 if (temp_min == null || temp_min == '') {
                   normalDialog(context, 'กรุณากรอกอุณภูมิต่ำสุด');
                   return;
                 }
-
+                if (farm_id == null || farm_id == '') {
+                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
+                  return;
+                }
                 if (plant_id == null ||
                     plant_name == null ||
                     age == null ||

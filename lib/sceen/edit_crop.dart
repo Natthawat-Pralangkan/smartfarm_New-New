@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -43,6 +44,7 @@ class _edit_cropState extends State<edit_crop> {
 
   var dropdownvaluegh_id;
   var dropdownvalue;
+  var valuedate;
   @override
   Widget build(BuildContext context) {
     arguments = ModalRoute.of(context)?.settings.arguments as Map;
@@ -190,7 +192,7 @@ class _edit_cropState extends State<edit_crop> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     farm_id = preferences.getString('farm_id');
     String? url =
-        'http://chiangraismartfarm.com/APIsmartfarm/getPlant.php?isAdd=true&farm_id=999';
+        'http://chiangraismartfarm.com/APIsmartfarm/getPlant.php?isAdd=true&farm_id=${farm_id}';
     Response response = await Dio().get(url);
     var result = json.decode(response.data);
     print('responseplant_id==>$response');
@@ -278,7 +280,7 @@ class _edit_cropState extends State<edit_crop> {
         crop_date = edit4.text,
         gh_id = edit6.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_crop.php?isAdd=true&crop_id=$data_ID&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$crop_date&gh_id=$dropdownvaluegh_id';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_crop.php?isAdd=true&crop_id=$data_ID&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$valuedate&gh_id=$dropdownvaluegh_id';
     await Dio().get(url).then((value) {
       print(url);
       print(value);
@@ -383,20 +385,49 @@ class _edit_cropState extends State<edit_crop> {
           ),
         ),
       );
-  Widget input_crop_date() => Container(
+  // Widget input_crop_date() => Container(
+  //       width: 250.0,
+  //       child: TextField(
+  //         controller: edit4,
+  //         decoration: InputDecoration(
+  //           labelStyle: TextStyle(color: MyStyle().textColor),
+  //           labelText: 'วันที่เริ่มปลูก :',
+  //           enabledBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColor)),
+  //           focusedBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColorfocus)),
+  //         ),
+  //       ),
+  //     );
+       Widget input_crop_date() => Container(
         width: 250.0,
-        child: TextField(
-          controller: edit4,
-          decoration: InputDecoration(
-            labelStyle: TextStyle(color: MyStyle().textColor),
-            labelText: 'วันที่เริ่มปลูก :',
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColorfocus)),
-          ),
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            DateTimeFormField(
+              decoration: const InputDecoration(
+                hintStyle: TextStyle(color: Colors.black45),
+                errorStyle: TextStyle(color: Colors.redAccent),
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.event_note),
+                labelText: 'วันที่เริ่มปลูก',
+              ),
+              firstDate: DateTime.now().add(const Duration(days: 10)),
+              lastDate: DateTime.now().add(const Duration(days: 40)),
+              initialDate: DateTime.now().add(const Duration(days: 20)),
+              autovalidateMode: AutovalidateMode.always,
+              validator: (DateTime? e) =>
+                  (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
+              onDateSelected: (DateTime value) {
+                print(value.toString());
+                setState(() {
+                  valuedate = value.toString();
+                });
+              },
+            ),
+          ],
         ),
       );
   // Widget input_gh_id() => Container(

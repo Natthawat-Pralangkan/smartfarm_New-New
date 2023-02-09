@@ -123,16 +123,16 @@ class _crop_close extends State<crop_close> {
                 print(
                     'close_date=$valuedate,amount=$amount,cost=$cost,crop_id=$dropdownvalue,farm_id=$farm_id');
                 if (dropdownvalue == null || dropdownvalue == '') {
-                  normalDialog(context, 'กรุณากรอกวันที่ปลูก');
+                  normalDialog(context, 'กรุณากรอกรอบการปลูก');
                   return;
                 }
 
                 if (valuedate == null || valuedate == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสพืช');
+                  normalDialog(context, 'กรุณากรอกวันที่เก็บเกี่ยว');
                   return;
                 }
                 if (amount == null || amount == '') {
-                  normalDialog(context, 'กรุณากรอกวันที่ปลูก');
+                  normalDialog(context, 'กรุณากรอกรายได้');
                   return;
                 }
                 if (farm_id == null || farm_id == '') {
@@ -141,7 +141,7 @@ class _crop_close extends State<crop_close> {
                 }
 
                 if (cost == null || cost == '') {
-                  normalDialog(context, 'กรุณากรอกรหัสพืช');
+                  normalDialog(context, 'กรุณากรอกต้นทุน');
                   return;
                 } else {
                   CheckUser();

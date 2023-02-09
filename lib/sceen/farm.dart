@@ -79,43 +79,43 @@ class _farm extends State<Infarm> {
                   return;
                 }
                 if (farm_name == null || farm_name == '') {
-                  normalDialog(context, 'กรุณากรอกชื่อ');
+                  normalDialog(context, 'กรุณากรอกชื่อฟร์าม');
                   return;
                 }
                 if (address == null || address == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกที่อยู่');
                   return;
                 }
                 if (tumbon == null || tumbon == '') {
-                  normalDialog(context, 'กรุณากรอก lat');
+                  normalDialog(context, 'กรุณากรอกตำบล');
                   return;
                 }
                 if (amphur == null || amphur == '') {
-                  normalDialog(context, 'กรุณากรอกID');
+                  normalDialog(context, 'กรุณากรอกอำเภอ');
                   return;
                 }
                 if (province == null || province == '') {
-                  normalDialog(context, 'กรุณากรอกชื่อ');
+                  normalDialog(context, 'กรุณากรอกจังหวัด');
                   return;
                 }
                 if (email == null || email == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกอีเมล');
                   return;
                 }
                 if (password == null || password == '') {
-                  normalDialog(context, 'กรุณากรอก lat');
+                  normalDialog(context, 'กรุณากรอกรหัสผ่าน');
                   return;
                 }
                 if (typeuser == null || typeuser == '') {
-                  normalDialog(context, 'กรุณากรอกID');
+                  normalDialog(context, 'กรุณากรอกประเภท');
                   return;
                 }
                 if (lat == null || lat == '') {
-                  normalDialog(context, 'กรุณากรอกชื่อ');
+                  normalDialog(context, 'กรุณากรอกละติจูด');
                   return;
                 }
                 if (Lng == null || Lng == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกลองติจูด');
                   return;
                 }
 

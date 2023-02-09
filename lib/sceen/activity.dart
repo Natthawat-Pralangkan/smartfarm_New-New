@@ -218,32 +218,32 @@ class _activity extends State<activity> {
                 print(
                     'crop_id=$dropdownvalue,work_date=$valuedate,work_detail=$work_detail,problem=$problem,cost=$cost,diesease_id=$dropdownvaluediesease,bug_id=$dropdownvaluebug,solve_by=$solve_by,activity_id=$activity_id,farm_id=$farm_id');
                 if (dropdownvalue == null || dropdownvalue == '') {
-                  normalDialog(context, 'กรุณากรอกID');
+                  normalDialog(context, 'กรุณากรอกรหัสรอบการปลูก');
                   return;
                 }
                 if (valuedate == null || valuedate == '') {
-                  normalDialog(context, 'กรุณากรอกชื่อ');
+                  normalDialog(context, 'กรุณากรอกวันที่บันทึก');
                   return;
                 }
                 if (work_detail == null || work_detail == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกรายละเอียด');
                   return;
                 }
                 if (problem == null || problem == '') {
-                  normalDialog(context, 'กรุณากรอก lat');
+                  normalDialog(context, 'กรุณากรอกปัญหาที่พบ');
                   return;
                 }
                 if (cost == null || cost == '') {
-                  normalDialog(context, 'กรุณากรอกID');
+                  normalDialog(context, 'กรุณากรอกค่าใช้จ่าย');
                   return;
                 }
                 if (dropdownvaluediesease == null ||
                     dropdownvaluediesease == '') {
-                  normalDialog(context, 'กรุณากรอกชื่อ');
+                  normalDialog(context, 'กรุณากรอกรหัสโรค');
                   return;
                 }
                 if (dropdownvaluebug == null || dropdownvaluebug == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกรหัสศัตรูพืช');
                   return;
                 }
                 if (activity_id == null || activity_id == '') {
@@ -251,15 +251,15 @@ class _activity extends State<activity> {
                   return;
                 }
                 if (farm_id == null || farm_id == '') {
-                  normalDialog(context, 'กรุณากรอกเบอร์โทร');
+                  normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
                 }
                 if (solve_by == null || solve_by == '') {
-                  normalDialog(context, 'กรุณากรอก lat');
+                  normalDialog(context, 'กรุณากรอกการแก้ไขปัญหา');
                   return;
                 }
                 if (activity_id == null || activity_id == '') {
-                  normalDialog(context, 'กรุณากรอกข้อมูลให้ครบทุกช่อง');
+                  normalDialog(context, 'กรุณากรอกรหัสการดูแลพืช');
                 } else {
                   CheckUser();
                 }
@@ -326,7 +326,7 @@ class _activity extends State<activity> {
           onChanged: (value) => activity_id = value.trim(),
           decoration: InputDecoration(
             labelStyle: TextStyle(color: MyStyle().textColor),
-            labelText: 'รหัสรอบการปลูก :',
+            labelText: 'รหัสการดูแลพืช :',
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(color: MyStyle().textColor)),
@@ -386,7 +386,7 @@ class _activity extends State<activity> {
                 errorStyle: TextStyle(color: Colors.redAccent),
                 border: OutlineInputBorder(),
                 suffixIcon: Icon(Icons.event_note),
-                labelText: 'วันที่เก็บเกี่ยว',
+                labelText: 'วันที่บันทึก',
               ),
               firstDate: DateTime.now().add(const Duration(days: 10)),
               lastDate: DateTime.now().add(const Duration(days: 40)),
@@ -484,7 +484,7 @@ class _activity extends State<activity> {
         child: DropdownButtonHideUnderline(
           child: DropdownButton2(
             hint: Text(
-              'รหัสโรค',
+              'รหัสโรคพืช',
               style: TextStyle(
                 fontSize: 14,
                 color: Theme.of(context).hintColor,

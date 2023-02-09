@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -47,6 +48,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   }
 
   var dropdownvalue;
+  var valuedate;
   @override
   Widget build(BuildContext context) {
     arguments = ModalRoute.of(context)?.settings.arguments as Map;
@@ -231,7 +233,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   Future<Null> editdata() async {
     final close_date = edit2.text, amount = edit3.text, cost = edit4.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_CloseCrop.php?isAdd=true&crop_id=$dropdownvalue&close_date=$close_date&amount=$amount&cost=$cost';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_CloseCrop.php?isAdd=true&crop_id=$dropdownvalue&close_date=$valuedate&amount=$amount&cost=$cost';
     await Dio().get(url).then((value) {
       print(url);
       print(value);
@@ -304,20 +306,49 @@ class _edit_crop_closeState extends State<edit_crop_close> {
           ),
         ),
       );
+  // Widget input_close_date() => Container(
+  //       width: 250.0,
+  //       child: TextField(
+  //         controller: edit2,
+  //         decoration: InputDecoration(
+  //           labelStyle: TextStyle(color: MyStyle().textColor),
+  //           labelText: 'วันที่เก็บเกี่ยว :',
+  //           enabledBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColor)),
+  //           focusedBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(12),
+  //               borderSide: BorderSide(color: MyStyle().textColorfocus)),
+  //         ),
+  //       ),
+  //     );
   Widget input_close_date() => Container(
         width: 250.0,
-        child: TextField(
-          controller: edit2,
-          decoration: InputDecoration(
-            labelStyle: TextStyle(color: MyStyle().textColor),
-            labelText: 'วันที่เก็บเกี่ยว :',
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColorfocus)),
-          ),
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            DateTimeFormField(
+              decoration: const InputDecoration(
+                hintStyle: TextStyle(color: Colors.black45),
+                errorStyle: TextStyle(color: Colors.redAccent),
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.event_note),
+                labelText: 'วันที่เก็บเกี่ยว',
+              ),
+              firstDate: DateTime.now().add(const Duration(days: 10)),
+              lastDate: DateTime.now().add(const Duration(days: 40)),
+              initialDate: DateTime.now().add(const Duration(days: 20)),
+              autovalidateMode: AutovalidateMode.always,
+              validator: (DateTime? e) =>
+                  (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
+              onDateSelected: (DateTime value) {
+                print(value.toString());
+                setState(() {
+                  valuedate = value.toString();
+                });
+              },
+            ),
+          ],
         ),
       );
   Widget input_amount() => Container(
