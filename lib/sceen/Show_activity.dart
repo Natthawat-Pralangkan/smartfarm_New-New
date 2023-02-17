@@ -56,17 +56,17 @@ class _Show_activityState extends State<Show_activity> {
           mainAxisAlignment: MainAxisAlignment.end,
         ),
         // MyStyle().ShowLogo3(),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 1),
-          child: const Text(
-            "ข้อมูลการดูแลพืช",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 26,
-                color: Color.fromARGB(255, 74, 216, 8),
-                fontWeight: FontWeight.bold),
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.symmetric(vertical: 1),
+        //   child: const Text(
+        //     "ข้อมูลการดูแลพืช",
+        //     textAlign: TextAlign.center,
+        //     style: TextStyle(
+        //         fontSize: 26,
+        //         color: Color.fromARGB(255, 74, 216, 8),
+        //         fontWeight: FontWeight.bold),
+        //   ),
+        // ),
         Showlist()
       ]),
     );

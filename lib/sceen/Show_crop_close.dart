@@ -71,17 +71,17 @@ class _Show_crop_close extends State<Show_crop_close> {
             padding: EdgeInsets.symmetric(horizontal: 1),
             child: const Text(" "),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 1),
-            child: const Text(
-              "ข้อมูลการเก็บเกี่ยว",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 26,
-                  color: Color.fromARGB(255, 74, 216, 8),
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 1),
+          //   child: const Text(
+          //     "ข้อมูลการเก็บเกี่ยว",
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(
+          //         fontSize: 26,
+          //         color: Color.fromARGB(255, 74, 216, 8),
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          // ),
           Showlist(),
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:smartfarm/sceen/Show_diesease.dart';
 import 'package:smartfarm/sceen/Show_farm.dart';
 import 'package:smartfarm/sceen/Show_greenhouse.dart';
 import 'package:smartfarm/sceen/Show_plant.dart';
+import 'package:smartfarm/sceen/search.dart';
 import 'package:smartfarm/sidemenu.dart';
 import 'package:smartfarm/style/mystyle.dart';
 
@@ -183,6 +184,26 @@ class _HomeState extends State<Home> {
                         height: 100,
                       ),
                       Text('ข้อมูลการดูแลพืช'),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  MaterialPageRoute route =
+                      MaterialPageRoute(builder: (value) => search());
+                  Navigator.push(context, route);
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'image/14.png',
+                         width: 100,
+                        height: 100,
+                      ),
+                      Text('ค้นหาข้อมูล'),
                     ],
                   ),
                 ),

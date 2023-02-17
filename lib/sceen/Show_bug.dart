@@ -57,17 +57,17 @@ class _Show_bug extends State<Show_bug> {
             mainAxisAlignment: MainAxisAlignment.end,
           ),
           // MyStyle().ShowLogo3(),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 1),
-            child: const Text(
-              "ข้อมูลศัตรูพืช",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 26,
-                  color: Color.fromARGB(255, 74, 216, 8),
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 1),
+          //   child: const Text(
+          //     "ข้อมูลศัตรูพืช",
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(
+          //         fontSize: 26,
+          //         color: Color.fromARGB(255, 74, 216, 8),
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          // ),
           Showlist()
         ],
       ),
