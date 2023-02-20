@@ -140,7 +140,7 @@ class _Show_bug extends State<Show_bug> {
                         Text(
                           (BugModels.bug_name.toString().length > 50)
                               ? BugModels.bug_name.toString().substring(0, 50)
-                              : "ชื่อศัตรูพืช"+" "+BugModels.bug_name.toString(),
+                              :BugModels.bug_name.toString(),
                         ),
                       ],
                     )),

@@ -134,8 +134,7 @@ class _Show_greenhouseState extends State<Show_greenhouse> {
                                   ? greehouseModel.gh_name
                                       .toString()
                                       .substring(0, 50)
-                                  : 'โรงเรียน' +
-                                      ' ' +
+                                  :
                                       greehouseModel.gh_name.toString(),
                             ),
                           ],

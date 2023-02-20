@@ -165,9 +165,7 @@ class _Show_plantState extends State<Show_plant> {
                               ? PlantModels.plant_name
                                   .toString()
                                   .substring(0, 50)
-                              : 'ชื่อพืช' +
-                                  " " +
-                                  PlantModels.plant_name.toString(),
+                              : PlantModels.plant_name.toString(),
                         ),
                         // Text(
                         //   (PlantModels.age.toString().length > 50)

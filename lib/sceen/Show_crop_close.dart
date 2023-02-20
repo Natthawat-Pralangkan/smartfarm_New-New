@@ -211,7 +211,7 @@ class _Show_crop_close extends State<Show_crop_close> {
                                   ? close_CropModel.close_date
                                       .toString()
                                       .substring(0, 50)
-                                  : "วันที่เก็บเกี่ยว" +" "+close_CropModel.close_date.toString(),
+                                  :close_CropModel.close_date.toString(),
                             ),
                           ],
                         )),

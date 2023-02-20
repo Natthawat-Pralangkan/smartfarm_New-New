@@ -146,7 +146,7 @@ class _Show_diesease extends State<Show_diesease> {
                                   ? dieseaseModel.diesease_name
                                       .toString()
                                       .substring(0, 50)
-                                  : "ชื่อโรค"+" "+dieseaseModel.diesease_name.toString(),
+                                  : dieseaseModel.diesease_name.toString(),
                             ),
                           ],
                         )),

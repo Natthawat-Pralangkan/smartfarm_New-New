@@ -186,8 +186,7 @@ class _Show_cropState extends State<Show_crop> {
                                   ? cropModel.crop_id
                                       .toString()
                                       .substring(0, 50)
-                                  : "รหัสรอบการปลูก" +
-                                      " " +
+                                  :
                                       cropModel.crop_id.toString(),
                             ),
                           ],
