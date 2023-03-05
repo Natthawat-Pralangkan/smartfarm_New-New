@@ -388,9 +388,16 @@ class _Show_plantState extends State<Show_plant> {
         width: 65,
         child: ElevatedButton(
           onPressed: () {
-            MaterialPageRoute route =
-                MaterialPageRoute(builder: (value) => plant());
-            Navigator.push(context, route);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => plant(),
+              ),
+            ).catchError(
+              (error) {
+                print('error ===>> $error');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 74, 216, 8),

@@ -8,6 +8,7 @@ import 'package:smartfarm/sceen/Show_farm.dart';
 import 'package:smartfarm/sceen/Show_greenhouse.dart';
 import 'package:smartfarm/sceen/Show_plant.dart';
 import 'package:smartfarm/sceen/search.dart';
+import 'package:smartfarm/sceen/search_2.dart';
 import 'package:smartfarm/sidemenu.dart';
 import 'package:smartfarm/style/mystyle.dart';
 
@@ -191,7 +192,7 @@ class _HomeState extends State<Home> {
               InkWell(
                 onTap: () {
                   MaterialPageRoute route =
-                      MaterialPageRoute(builder: (value) => search());
+                      MaterialPageRoute(builder: (value) => Search2());
                   Navigator.push(context, route);
                 },
                 child: Container(

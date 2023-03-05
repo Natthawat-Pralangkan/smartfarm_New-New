@@ -304,10 +304,22 @@ class _Show_diesease extends State<Show_diesease> {
   Widget create() => Container(
         width: 65,
         child: ElevatedButton(
+          // onPressed: () {
+          //   MaterialPageRoute route =
+          //       MaterialPageRoute(builder: (value) => diesease());
+          //   Navigator.push(context, route);
+          // },
           onPressed: () {
-            MaterialPageRoute route =
-                MaterialPageRoute(builder: (value) => diesease());
-            Navigator.push(context, route);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => diesease(),
+              ),
+            ).catchError(
+              (error) {
+                print('error ===>> $error');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 74, 216, 8),

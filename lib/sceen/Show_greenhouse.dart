@@ -311,10 +311,22 @@ class _Show_greenhouseState extends State<Show_greenhouse> {
   Widget create() => Container(
         width: 65,
         child: ElevatedButton(
+          // onPressed: () {
+          //   MaterialPageRoute route =
+          //       MaterialPageRoute(builder: (value) => greenhouse());
+          //   Navigator.push(context, route);
+          // },
           onPressed: () {
-            MaterialPageRoute route =
-                MaterialPageRoute(builder: (value) => greenhouse());
-            Navigator.push(context, route);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => greenhouse(),
+              ),
+            ).catchError(
+              (error) {
+                print('error ===>> $error');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 74, 216, 8),

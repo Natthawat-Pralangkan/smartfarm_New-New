@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartfarm/style/dialog.dart';
 import '../style/mystyle.dart';
 
@@ -69,10 +70,21 @@ class plant extends StatefulWidget {
 
 class _plant extends State<plant> {
   String? plant_id, plant_name, age, int, ph, temp_min, temp_max, farm_id;
+  TextEditingController farm_idController = TextEditingController();
 
   @override
   void initState() {
-    var initState = super.initState();
+    super.initState();
+    getName();
+  }
+
+  Future getName() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    farm_id = preferences.getString('farm_id');
+    farm_idController.text = farm_id!;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -205,7 +217,8 @@ class _plant extends State<plant> {
   Widget input_farm_id() => Container(
         width: 250.0,
         margin: const EdgeInsets.all(10),
-        child: TextField(
+        child: TextFormField(
+          controller: farm_idController,
           onChanged: (value) => farm_id = value.trim(),
           autofocus: true,
           decoration: InputDecoration(

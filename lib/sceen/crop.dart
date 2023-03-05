@@ -23,13 +23,15 @@ class _crop extends State<crop> {
   List categoryItemlist = [];
   List categoryItemlistgh_id = [];
   TextEditingController _date = TextEditingController();
-  getName() async {
+    TextEditingController farm_idController = TextEditingController();
+
+  Future getName() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      farm_id = preferences.getString('farm_id');
-      farm_name = preferences.getString('farm_name');
-      email = preferences.getString('email');
-    });
+    farm_id = preferences.getString('farm_id');
+    farm_idController.text = farm_id!;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
 /////////////////////////////getPlant//////////////////////////////////////////////////////
@@ -107,7 +109,7 @@ class _crop extends State<crop> {
 //////////////////////////////////////////////////////////////////////////
   @override
   void initState() {
-    var initState = super.initState();
+    super.initState();
     getplant();
     getName();
     getgreenhouse();
@@ -223,7 +225,8 @@ class _crop extends State<crop> {
   Widget input_farm_id() => Container(
         width: 250.0,
         margin: const EdgeInsets.all(10),
-        child: TextField(
+        child: TextFormField(
+           controller: farm_idController,
           onChanged: (value) => farm_id = value.trim(),
           decoration: InputDecoration(
             labelStyle: TextStyle(color: MyStyle().textColor),

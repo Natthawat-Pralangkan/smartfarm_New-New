@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartfarm/style/Mystyle.dart';
 import 'package:smartfarm/style/dialog.dart';
 
@@ -11,10 +12,12 @@ class greenhouse extends StatefulWidget {
 
 class _greenhouse extends State<greenhouse> {
   String? farm_id, gh_id, gh_name, gh_status;
+  TextEditingController farm_idController = TextEditingController();
 
   @override
   void initState() {
-    var initState = super.initState();
+    super.initState();
+    getName();
   }
 
   @override
@@ -46,6 +49,15 @@ class _greenhouse extends State<greenhouse> {
         ],
       ),
     );
+  }
+
+  Future getName() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    farm_id = preferences.getString('farm_id');
+    farm_idController.text = farm_id!;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Widget signupbut() => Row(
@@ -119,7 +131,8 @@ class _greenhouse extends State<greenhouse> {
   Widget input_farm_id() => Container(
         width: 250.0,
         margin: const EdgeInsets.all(10),
-        child: TextField(
+        child: TextFormField(
+          controller: farm_idController,
           onChanged: (value) => farm_id = value.trim(),
           decoration: InputDecoration(
             labelStyle: TextStyle(color: MyStyle().textColor),

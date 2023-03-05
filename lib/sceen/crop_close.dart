@@ -22,16 +22,17 @@ class crop_close extends StatefulWidget {
 class _crop_close extends State<crop_close> {
   String? crop_id, close_date, amount, cost;
   List categoryItemlist = [];
-
+  TextEditingController farm_idController = TextEditingController();
   String? farm_id, farm_name, email;
   List<CropModel> cropModel = [];
-  getName() async {
+
+  Future getName() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      farm_id = preferences.getString('farm_id');
-      farm_name = preferences.getString('farm_name');
-      email = preferences.getString('email');
-    });
+    farm_id = preferences.getString('farm_id');
+    farm_idController.text = farm_id!;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   bool readdata = false;
@@ -73,8 +74,9 @@ class _crop_close extends State<crop_close> {
 
   @override
   void initState() {
-    var initState = super.initState();
+    super.initState();
     getCloseCrop();
+    getName();
   }
 
   var dropdownvalue;
@@ -188,6 +190,7 @@ class _crop_close extends State<crop_close> {
         width: 250.0,
         margin: const EdgeInsets.all(10),
         child: TextField(
+          controller: farm_idController,
           onChanged: (value) => farm_id = value.trim(),
           decoration: InputDecoration(
             labelStyle: TextStyle(color: MyStyle().textColor),

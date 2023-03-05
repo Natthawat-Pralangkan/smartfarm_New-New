@@ -91,10 +91,22 @@ class _Show_crop_close extends State<Show_crop_close> {
   Widget create() => Container(
         width: 65,
         child: ElevatedButton(
-          onPressed: () {
-            MaterialPageRoute route =
-                MaterialPageRoute(builder: (value) => crop_close());
-            Navigator.push(context, route);
+          // onPressed: () {
+          //   MaterialPageRoute route =
+          //       MaterialPageRoute(builder: (value) => crop_close());
+          //   Navigator.push(context, route);
+          // },
+           onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => crop_close(),
+              ),
+            ).catchError(
+              (error) {
+                print('error ===>> $error');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 74, 216, 8),

@@ -73,10 +73,22 @@ class _Show_cropState extends State<Show_crop> {
   Widget create() => Container(
         width: 65,
         child: ElevatedButton(
-          onPressed: () {
-            MaterialPageRoute route =
-                MaterialPageRoute(builder: (value) => crop());
-            Navigator.push(context, route);
+          // onPressed: () {
+          //   MaterialPageRoute route =
+          //       MaterialPageRoute(builder: (value) => crop());
+          //   Navigator.push(context, route);
+          // },
+           onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => crop(),
+              ),
+            ).catchError(
+              (error) {
+                print('error ===>> $error');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 74, 216, 8),
@@ -85,6 +97,7 @@ class _Show_cropState extends State<Show_crop> {
               borderRadius: new BorderRadius.circular(10.0),
             ),
           ),
+         
           child: Text(
             'เพิ่ม',
             style: TextStyle(
