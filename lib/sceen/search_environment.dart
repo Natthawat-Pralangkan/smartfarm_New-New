@@ -3,22 +3,21 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smartfarm/model/CloseCropModel.dart';
-import 'package:smartfarm/sceen/Show_bug.dart';
 import 'package:intl/intl.dart';
+import 'package:smartfarm/model/environmentModel.dart';
 
-class Search2 extends StatefulWidget {
-  const Search2({super.key});
+class Search_environment extends StatefulWidget {
+  const Search_environment({super.key});
 
   @override
-  State<Search2> createState() => _Search2State();
+  State<Search_environment> createState() => _Search_environmentState();
 }
 
-class _Search2State extends State<Search2> {
+class _Search_environmentState extends State<Search_environment> {
   final formKey = GlobalKey<FormState>();
   TextEditingController searchController = TextEditingController();
-  List<CloseCropModel1> userrmodel = [];
-  List<CloseCropModel1> user1model = [];
+  List<Environment> userrmodel = [];
+  List<Environment> user1model = [];
   bool load = false;
   String? farm_id, farm_name, email;
   bool havedata = false;
@@ -44,20 +43,20 @@ class _Search2State extends State<Search2> {
   Future getuser(String farm_id) async {
     if (mounted) {
       String url =
-          'http://chiangraismartfarm.com/APIsmartfarm/getCloseCrop.php?isAdd=true&farm_id=${farm_id}';
+          'http://chiangraismartfarm.com/APIsmartfarm/environment.php?isAdd=true&farm_id=${farm_id}';
       await Dio().get(url).then(
         (value) {
           if (value.toString() == 'null') {
           } else {
             print(value.data);
             for (var item in json.decode(value.data)) {
-              CloseCropModel1 setusermodel = CloseCropModel1.fromMap(item);
-              print('==>> ${setusermodel.crop_id}');
+              Environment setusermodel = Environment.fromMap(item);
+              print('==>> ${setusermodel.datekey}');
               userrmodel.add(setusermodel);
               user1model.add(setusermodel);
             }
             user1model = userrmodel
-                .where((r) => (r.close_date
+                .where((r) => (r.datekey
                     .toLowerCase()
                     .contains(searchController.text.toLowerCase())))
                 .toList();
@@ -97,7 +96,7 @@ class _Search2State extends State<Search2> {
                       onChanged: (value) {
                         if (mounted) {
                           user1model = userrmodel
-                              .where((r) => (r.close_date
+                              .where((r) => (r.datekey
                                   .toLowerCase()
                                   .contains(value.toLowerCase())))
                               .toList();
@@ -163,7 +162,7 @@ class _Search2State extends State<Search2> {
                                             .format(sdsd);
 
                                         user1model = userrmodel
-                                            .where((r) => (r.close_date
+                                            .where((r) => (r.datekey
                                                 .toLowerCase()
                                                 .contains(dsd
                                                     .toString()
@@ -260,23 +259,99 @@ class _Search2State extends State<Search2> {
                                           //       TextStyle(color: Colors.black),
                                           // ),
                                           Text(
-                                            'รหัสฟร์าม' +' '+
+                                            'รหัสฟร์าม' +
+                                                ' ' +
                                                 user1model[index].farm_id,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            'วันที่เก็บเกี่ยว' +' '+ user1model[index].close_date,
+                                            'เอกสาร' +
+                                                ' ' +
+                                                user1model[index].docno,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            'ต้นทุน'+' '+user1model[index].cost,
+                                            'รหัสอุปกรณ์' +
+                                                ' ' +
+                                                user1model[index].device_id,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            'รายได้'+user1model[index].amount,
+                                            'คีย์วันที่' +
+                                                ' ' +
+                                                user1model[index].datekey,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'ไทม์คีย์' +
+                                                ' ' +
+                                                user1model[index].timekey,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'อุณหภูมิ' +
+                                                ' ' +
+                                                user1model[index].temp,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'ความชื้น' +
+                                                ' ' +
+                                                user1model[index].humid,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'แสงสว่าง' +
+                                                ' ' +
+                                                user1model[index].light,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                             'ดิน_1' +
+                                                ' ' +user1model[index].soild_1,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'ดิน_2' +
+                                                ' ' +
+                                                user1model[index].soild_2,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'เฟิร์น_n' +
+                                                ' ' +
+                                                user1model[index].fer_n,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'เฟิร์น_p' +
+                                                ' ' +
+                                                user1model[index].fer_p,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'เฟิร์น_k' +
+                                                ' ' +
+                                                user1model[index].fer_k,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            'น้ำ_อุณหภูมิ' +
+                                                ' ' +
+                                                user1model[index].water_temp,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
