@@ -225,7 +225,7 @@ class _HomeState extends State<Home> {
                          width: 100,
                         height: 100,
                       ),
-                      Text('ค้นหาข้อมูล'),
+                      Text('ค้นหาข้อมูลสิ่งแวดล้อม'),
                     ],
                   ),
                 ),
