@@ -254,28 +254,29 @@ class _Search2State extends State<Search2> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
+                                          // Text(
+                                          //   user1model[index].crop_id,
+                                          //   style:
+                                          //       TextStyle(color: Colors.black),
+                                          // ),
                                           Text(
-                                            user1model[index].crop_id,
+                                            'รหัสฟร์าม' +' '+
+                                                user1model[index].farm_id,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            user1model[index].farm_id,
+                                            'วันที่เก็บเกี่ยว' +' '+ user1model[index].close_date,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            user1model[index].close_date,
+                                            'ต้นทุน'+' '+user1model[index].cost,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
                                           Text(
-                                            user1model[index].cost,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          ),
-                                          Text(
-                                            user1model[index].amount,
+                                            'รายได้'+user1model[index].amount,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
