@@ -39,13 +39,13 @@ class _Show_crop_close extends State<Show_crop_close> {
               ),
             ),
             // MyStyle().ShowLogo(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลการเก็บเกี่ยว',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลการเก็บเกี่ยว',
+            //     style: TextStyle(color: Colors.white, fontSize: 18),
+            //   ),
+            // )
           ],
         ),
       ),

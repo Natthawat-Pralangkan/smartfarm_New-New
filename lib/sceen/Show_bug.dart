@@ -39,13 +39,13 @@ class _Show_bug extends State<Show_bug> {
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลศัตรูพืช',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลศัตรูพืช',
+            //     style: TextStyle(color: Colors.white, fontSize: 18.0),
+            //   ),
+            // )
           ],
         ),
       ),

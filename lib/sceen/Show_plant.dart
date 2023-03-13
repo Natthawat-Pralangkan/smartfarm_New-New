@@ -38,13 +38,13 @@ class _Show_plantState extends State<Show_plant> {
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลพืช',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลพืช',
+            //     style: TextStyle(color: Colors.white, fontSize: 18.0),
+            //   ),
+            // )
           ],
         ),
       ),

@@ -40,13 +40,13 @@ class _Show_activityState extends State<Show_activity> {
               ),
             ),
             // MyStyle().ShowLogo(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลการดูแลพืช',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลการดูแลพืช',
+            //     style: TextStyle(color: Colors.white, fontSize: 18),
+            //   ),
+            // )
           ],
         ),
       ),

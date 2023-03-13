@@ -38,13 +38,13 @@ class _Show_greenhouseState extends State<Show_greenhouse> {
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลโรงเรือน',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลโรงเรือน',
+            //     style: TextStyle(color: Colors.white, fontSize: 18.0),
+            //   ),
+            // )
           ],
         ),
       ),

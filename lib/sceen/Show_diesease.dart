@@ -39,13 +39,13 @@ class _Show_diesease extends State<Show_diesease> {
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'ข้อมูลโรคพืช',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     'ข้อมูลโรคพืช',
+            //     style: TextStyle(color: Colors.white, fontSize: 18.0),
+            //   ),
+            // )
           ],
         ),
       ),
