@@ -158,21 +158,6 @@ class _plant extends State<plant> {
                 if (farm_id == null || farm_id == '') {
                   normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
-                }
-                if (plant_id == null ||
-                    plant_name == null ||
-                    age == null ||
-                    ph == null ||
-                    temp_max == null ||
-                    temp_min == null ||
-                    plant_name == '' ||
-                    plant_id == '' ||
-                    age == '' ||
-                    ph == '' ||
-                    farm_id == '' ||
-                    temp_max == '' ||
-                    temp_min == '') {
-                  normalDialog(context, 'กรุณากรอกข้อมูลให้ครบทุกช่อง');
                 } else {
                   CheckUser();
                 }

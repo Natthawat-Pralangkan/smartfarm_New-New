@@ -144,7 +144,6 @@ class _crop_close extends State<crop_close> {
 
                 if (cost == null || cost == '') {
                   normalDialog(context, 'กรุณากรอกต้นทุน');
-                  return;
                 } else {
                   CheckUser();
                 }
