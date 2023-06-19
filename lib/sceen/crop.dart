@@ -17,7 +17,7 @@ class crop extends StatefulWidget {
 }
 
 class _crop extends State<crop> {
-  String? farm_id, plant_id, crop_date, crop_id, gh_id, farm_name, email;
+  String? farm_id, plant_id, crop_date, crop_id, gh_id, farm_name, email,capital,qty;
   List<PlantModel> PlantModels = [];
   List<GreehouseModel> greehouseModel = [];
   List categoryItemlist = [];
@@ -143,9 +143,10 @@ class _crop extends State<crop> {
         children: <Widget>[
           input_farm_id(),
           input_crop_id(),
-          input_plant_id(),
           input_crop_date(),
           input_gh_id(),
+          input_plant_id(),
+          inputcapitalandQty(),
           signupbut(),
         ],
       ),
@@ -160,7 +161,7 @@ class _crop extends State<crop> {
             child: ElevatedButton(
               onPressed: () {
                 print(
-                    'farm_id=$farm_id,plant_id=$dropdownvalue,crop_date=$valuedate,crop_id=$crop_id,gh_id=$dropdownvaluegh_id');
+                    'farm_id=$farm_id,plant_id=$dropdownvalue,crop_date=$valuedate,crop_id=$crop_id,gh_id=$dropdownvaluegh_id,capital=$capital,qty=$qty');
                 if (farm_id == null || farm_id == '') {
                   normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
@@ -177,6 +178,14 @@ class _crop extends State<crop> {
                 }
                 if (dropdownvaluegh_id == null || dropdownvaluegh_id == '') {
                   normalDialog(context, 'กรุณากรอกรหัสโรงเรียน');
+                  return;
+                }
+                if (capital == null || capital == '') {
+                  normalDialog(context, 'กรุณากรอกต้นทุน');
+                  return;
+                }
+                if (qty == null || qty == '') {
+                  normalDialog(context, 'กรุณากรอกจำนวน(ต้น)');
                   return;
                 }
                 if (valuedate == null || valuedate == '') {
@@ -206,7 +215,7 @@ class _crop extends State<crop> {
 
   Future<void> CheckUser() async {
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/insert_crop.php?isAdd=true&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$valuedate&gh_id=$dropdownvaluegh_id&crop_id=$crop_id';
+        'http://chiangraismartfarm.com/APIsmartfarm/insert_crop.php?isAdd=true&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$valuedate&gh_id=$dropdownvaluegh_id&cost=$capital&qty=$qty&crop_id=$crop_id';
     try {
       Response response = await Dio().get(url);
       print(response.statusCode);
@@ -265,7 +274,7 @@ class _crop extends State<crop> {
         child: DropdownButtonHideUnderline(
           child: DropdownButton2(
             hint: Text(
-              'รหัสพืช',
+              'พืช',
               style: TextStyle(
                 fontSize: 14,
                 color: Theme.of(context).hintColor,
@@ -356,7 +365,53 @@ class _crop extends State<crop> {
           ],
         ),
       );
-
+ Widget inputcapitalandQty() => Row(
+        children: [
+          Expanded(
+            child: Container(
+              width: 250.0,
+              margin: const EdgeInsets.all(10),
+              child: TextField(
+                onChanged: (value) => capital = value.trim(),
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: MyStyle().textColor),
+                  labelText: 'จำนวน (ต้น) :',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColorfocus),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10), // Add spacing between the inputs
+          Expanded(
+            child: Container(
+              width: 250.0,
+              margin: const EdgeInsets.all(10),
+              child: TextField(
+                onChanged: (value) => qty = value.trim(),
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: MyStyle().textColor),
+                  labelText: 'ต้นทุนค่าใช้จ่าย :',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColorfocus),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
   // child: TextField(
   //   onChanged: (value) => crop_date = value.trim(),
   //   decoration: InputDecoration(
