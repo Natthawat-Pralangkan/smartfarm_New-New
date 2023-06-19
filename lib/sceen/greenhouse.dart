@@ -180,21 +180,44 @@ class _greenhouse extends State<greenhouse> {
           ),
         ),
       );
-  Widget input_gh_status() => Container(
-        width: 250.0,
-        margin: const EdgeInsets.all(10),
-        child: TextField(
-          onChanged: (value) => gh_status = value.trim(),
-          decoration: InputDecoration(
-            labelStyle: TextStyle(color: MyStyle().textColor),
-            labelText: 'สถานะ :',
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: MyStyle().textColorfocus)),
-          ),
+Widget input_gh_status() => Container(
+  width: 250.0,
+  margin: const EdgeInsets.all(10),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'สถานะ :',
+        style: TextStyle(
+          color: MyStyle().textColor,
         ),
-      );
+      ),
+      Row(
+        children: [
+          Radio<String>(
+            value: '0',
+            groupValue: gh_status,
+            onChanged: (value) {
+              setState(() {
+                gh_status = value;
+              });
+            },
+          ),
+          Text('ว่าง'),
+          Radio<String>(
+            value: '1',
+            groupValue: gh_status,
+            onChanged: (value) {
+              setState(() {
+                gh_status = value;
+              });
+            },
+          ),
+          Text('ไม่ว่าง'),
+        ],
+      ),
+    ],
+  ),
+);
+
 }
