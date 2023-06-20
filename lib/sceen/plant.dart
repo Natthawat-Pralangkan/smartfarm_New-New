@@ -213,7 +213,8 @@ class _plant extends State<plant> {
                 if (farm_id == null || farm_id == '') {
                   normalDialog(context, 'กรุณากรอกรหัสฟร์าม');
                   return;
-                } else {
+                } 
+                else {
                   CheckUser();
                 }
               },
@@ -458,7 +459,7 @@ class _plant extends State<plant> {
               width: 250.0,
               margin: const EdgeInsets.all(10),
               child: TextField(
-                onChanged: (value) => soil_min = value.trim(),
+                onChanged: (value) => humid_min = value.trim(),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: MyStyle().textColor),
                   labelText: 'ความชื้นสัมพัทธ์ต่ำสุด :',
@@ -505,7 +506,7 @@ class _plant extends State<plant> {
               width: 250.0,
               margin: const EdgeInsets.all(10),
               child: TextField(
-                onChanged: (value) => humid_min = value.trim(),
+                onChanged: (value) => light_min = value.trim(),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: MyStyle().textColor),
                   labelText: 'แสงต่ำสุด :',
