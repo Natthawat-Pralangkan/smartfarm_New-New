@@ -85,6 +85,7 @@ class _plant extends State<plant> {
       humid_min,
       humid_max,
       Fertilizer,
+      remark_crop,
       farm_id;
   TextEditingController farm_idController = TextEditingController();
 
@@ -134,6 +135,7 @@ class _plant extends State<plant> {
           inputSoilRange(),
           inputPHRange(),
           inputFertilizer(),
+          inputremark_crop(),
           signupbut(),
         ],
       ),
@@ -201,7 +203,6 @@ class _plant extends State<plant> {
                   normalDialog(context, 'กรุณากรอกอุณภูมิสูงสุด');
                   return;
                 }
-
                 if (temp_min == null || temp_min == '') {
                   normalDialog(context, 'กรุณากรอกอุณภูมิต่ำสุด');
                   return;
@@ -238,7 +239,7 @@ class _plant extends State<plant> {
 
   Future<void> CheckUser() async {
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/insert_plant.php?isAdd=true&farm_id=$farm_id&plant_id=$plant_id&plant_name=$plant_name&age_min=$age_min&age_max=$age_max&ph_min=$ph_min&ph_max=$ph_max&temp_max=$temp_max&temp_min=$temp_min&soil_max=$soil_max&soil_min=$soil_min&light_max=$light_max&light_min=$light_min&humid_min=$humid_min&humid_max=$humid_max&Fertilizer=$Fertilizer';
+        'http://chiangraismartfarm.com/APIsmartfarm/insert_plant.php?isAdd=true&farm_id=$farm_id&plant_id=$plant_id&plant_name=$plant_name&age_min=$age_min&age_max=$age_max&ph_min=$ph_min&ph_max=$ph_max&temp_max=$temp_max&temp_min=$temp_min&soil_max=$soil_max&soil_min=$soil_min&light_max=$light_max&light_min=$light_min&humid_min=$humid_min&humid_max=$humid_max&fertilizer=$Fertilizer&remark_crop=$remark_crop';
     try {
       Response response = await Dio().get(url);
       print(response.statusCode);
@@ -354,6 +355,24 @@ class _plant extends State<plant> {
           ),
         ),
       );
+
+  Widget inputremark_crop() => Container(
+        width: 250.0,
+        margin: const EdgeInsets.all(10),
+        child: TextField(
+          onChanged: (value) => remark_crop = value.trim(),
+          decoration: InputDecoration(
+            labelStyle: TextStyle(color: MyStyle().textColor),
+            labelText: 'คำอธิบายเพิ่มเติม :',
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: MyStyle().textColor)),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: MyStyle().textColorfocus)),
+          ),
+        ),
+      );
   ///////////////////////////////////////////////////////////////////////////////// PH
   Widget inputPHRange() => Row(
         children: [
@@ -458,7 +477,7 @@ class _plant extends State<plant> {
               width: 250.0,
               margin: const EdgeInsets.all(10),
               child: TextField(
-                onChanged: (value) => soil_min = value.trim(),
+                onChanged: (value) => humid_min = value.trim(),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: MyStyle().textColor),
                   labelText: 'ความชื้นสัมพัทธ์ต่ำสุด :',
@@ -505,7 +524,7 @@ class _plant extends State<plant> {
               width: 250.0,
               margin: const EdgeInsets.all(10),
               child: TextField(
-                onChanged: (value) => humid_min = value.trim(),
+                onChanged: (value) => light_min = value.trim(),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: MyStyle().textColor),
                   labelText: 'แสงต่ำสุด :',

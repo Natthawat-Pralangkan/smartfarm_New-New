@@ -27,6 +27,8 @@ class _edit_cropState extends State<edit_crop> {
   TextEditingController edit4 = TextEditingController();
   TextEditingController edit5 = TextEditingController();
   TextEditingController edit6 = TextEditingController();
+  TextEditingController ecost = TextEditingController();
+  TextEditingController eqty = TextEditingController();
   List<CropModel> cropModel = [];
   List categoryItemlist = [];
   List categoryItemlistgh_id = [];
@@ -123,6 +125,11 @@ class _edit_cropState extends State<edit_crop> {
             padding: EdgeInsets.symmetric(horizontal: 1),
             child: const Text(" "),
           ),
+          inputcapitalandQty(),
+           Padding(
+            padding: EdgeInsets.symmetric(horizontal: 1),
+            child: const Text(" "),
+          ),
           inputCusbut(),
         ],
       ),
@@ -162,7 +169,7 @@ class _edit_cropState extends State<edit_crop> {
 
   String? data_IDa = '';
   gettextdata(String? ID,
-      {String? farm_id, plant_id, crop_date, crop_id, gh_id}) async {
+      {String? farm_id, plant_id, crop_date, crop_id, gh_id,cost,qty}) async {
     setState(() {
       data_IDa = ID ?? '';
       edit2.text = farm_id ?? '';
@@ -170,6 +177,8 @@ class _edit_cropState extends State<edit_crop> {
       edit4.text = crop_date ?? '';
       edit5.text = crop_id ?? '';
       edit5.text = gh_id ?? '';
+      eqty.text = qty ?? '';
+      ecost.text = cost ?? '';
     });
   }
 
@@ -271,6 +280,8 @@ class _edit_cropState extends State<edit_crop> {
       edit4.text = result['crop_date'];
       edit5.text = result['crop_id'];
       edit6.text = result['gh_id'];
+      eqty.text = result['qty'];
+      ecost.text = result['cost'];
     });
   }
 
@@ -278,9 +289,11 @@ class _edit_cropState extends State<edit_crop> {
     final farm_id = edit2.text,
         plant_id = edit3.text,
         crop_date = edit4.text,
-        gh_id = edit6.text;
+        gh_id = edit6.text,
+        cost = ecost.text,
+        qty = eqty.text;
     String url =
-        'http://chiangraismartfarm.com/APIsmartfarm/edit_crop.php?isAdd=true&crop_id=$data_ID&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$valuedate&gh_id=$dropdownvaluegh_id';
+        'http://chiangraismartfarm.com/APIsmartfarm/edit_crop.php?isAdd=true&crop_id=$data_ID&farm_id=$farm_id&plant_id=$dropdownvalue&crop_date=$valuedate&gh_id=$dropdownvaluegh_id&cost=$cost&qty=$qty';
     await Dio().get(url).then((value) {
       print(url);
       print(value);
@@ -291,6 +304,8 @@ class _edit_cropState extends State<edit_crop> {
           edit3.text = '';
           edit4.text = '';
           edit6.text = '';
+          ecost.text = '';
+          eqty.text = '';
           data_IDa = '';
         });
       } else if (value.toString() == 'havedata') {
@@ -477,4 +492,53 @@ class _edit_cropState extends State<edit_crop> {
           ),
         ),
       );
+      Widget inputcapitalandQty() => Row(
+        children: [
+          Expanded(
+            child: Container(
+              width: 250.0,
+              margin: const EdgeInsets.all(10),
+              child: TextField(
+                controller: ecost,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: MyStyle().textColor),
+                  labelText: 'จำนวน (ต้น) :',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColorfocus),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10), // Add spacing between the inputs
+          Expanded(
+            child: Container(
+              width: 250.0,
+              margin: const EdgeInsets.all(10),
+              child: TextField(
+                controller: eqty,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: MyStyle().textColor),
+                  labelText: 'ต้นทุนค่าใช้จ่าย :',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: MyStyle().textColorfocus),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+
+      
 }
