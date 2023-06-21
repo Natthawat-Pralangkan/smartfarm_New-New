@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartfarm/model/greenhouse_model.dart';
 import 'package:smartfarm/model/plant_model.dart';
@@ -342,6 +343,7 @@ class _crop extends State<crop> {
         child: Column(
           children: <Widget>[
             DateTimeFormField(
+              dateFormat: DateFormat('dd/MM/yyyy'),
               decoration: const InputDecoration(
                 hintStyle: TextStyle(color: Colors.black45),
                 errorStyle: TextStyle(color: Colors.redAccent),
@@ -349,9 +351,10 @@ class _crop extends State<crop> {
                 suffixIcon: Icon(Icons.event_note),
                 labelText: 'วันที่เริ่มปลูก',
               ),
-              firstDate: DateTime.now().add(const Duration(days: 10)),
-              lastDate: DateTime.now().add(const Duration(days: 40)),
-              initialDate: DateTime.now().add(const Duration(days: 20)),
+              firstDate: DateTime(0000),
+              lastDate: DateTime(9999),
+              initialDate: DateTime.now(),
+              mode: DateTimeFieldPickerMode.date,
               autovalidateMode: AutovalidateMode.always,
               validator: (DateTime? e) =>
                   (e?.day ?? 0) == 1 ? 'Please not the first day' : null,

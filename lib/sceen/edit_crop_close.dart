@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:js_interop';
 import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartfarm/model/crop_close_model.dart';
 import 'package:smartfarm/model/crop_model.dart';
@@ -25,6 +27,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   TextEditingController edit5 = TextEditingController();
   List<CloseCropModel> close_CropModel = [];
   List categoryItemlist = [];
+  Key? sdss;
 
   List<CropModel> cropModel = [];
   Map arguments = Map();
@@ -33,6 +36,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
   void initState() {
     getdata_by_id();
     getCloseCrop();
+
     super.initState();
   }
 
@@ -328,6 +332,7 @@ class _edit_crop_closeState extends State<edit_crop_close> {
         child: Column(
           children: <Widget>[
             DateTimeFormField(
+              dateFormat: DateFormat('dd/MM/yyyy'),
               decoration: const InputDecoration(
                 hintStyle: TextStyle(color: Colors.black45),
                 errorStyle: TextStyle(color: Colors.redAccent),
@@ -335,9 +340,11 @@ class _edit_crop_closeState extends State<edit_crop_close> {
                 suffixIcon: Icon(Icons.event_note),
                 labelText: 'วันที่เก็บเกี่ยว',
               ),
-              firstDate: DateTime.now().add(const Duration(days: 10)),
-              lastDate: DateTime.now().add(const Duration(days: 40)),
-              initialDate: DateTime.now().add(const Duration(days: 20)),
+              firstDate: DateTime(0000),
+              lastDate: DateTime(9999),
+              mode: DateTimeFieldPickerMode.date,
+              initialDate:
+                  edit2.text.isEmpty ? null : DateTime.parse(edit2.text),
               autovalidateMode: AutovalidateMode.always,
               validator: (DateTime? e) =>
                   (e?.day ?? 0) == 1 ? 'Please not the first day' : null,

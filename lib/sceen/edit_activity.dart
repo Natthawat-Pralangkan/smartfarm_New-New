@@ -3,6 +3,7 @@ import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartfarm/model/activity_model.dart';
 import 'package:smartfarm/model/bug_modeel.dart';
@@ -492,16 +493,17 @@ class _edit_activity extends State<edit_activity> {
         child: Column(
           children: <Widget>[
             DateTimeFormField(
-              decoration: const InputDecoration(
+                dateFormat: DateFormat('dd/MM/yyyy'),
+                decoration: const InputDecoration(
                 hintStyle: TextStyle(color: Colors.black45),
                 errorStyle: TextStyle(color: Colors.redAccent),
                 border: OutlineInputBorder(),
                 suffixIcon: Icon(Icons.event_note),
                 labelText: 'วันที่บันทึก',
               ),
-              firstDate: DateTime.now().add(const Duration(days: 10)),
-              lastDate: DateTime.now().add(const Duration(days: 40)),
-              initialDate: DateTime.now().add(const Duration(days: 20)),
+               firstDate: DateTime(0000),
+              lastDate: DateTime(9999),
+              mode: DateTimeFieldPickerMode.date,
               autovalidateMode: AutovalidateMode.always,
               validator: (DateTime? e) =>
                   (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
